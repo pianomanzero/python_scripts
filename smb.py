@@ -28,9 +28,10 @@ def processArgs():
 
 class GlobalStrings:
   # global strings to key from having stupid typos
-  REGPATH_SRV_SHARES = "registry.Services.lwio.Parameters.Drivers.srv.shares._multi_sz"
-  REGPATH_SRV_SHARE_ACLS = "registry.Services.lwio.Parameters.Drivers.srv.shares.security._binary"
-  REGPATH_ONEFS_SHARES = "registry.Services.lwio.Parameters.Drivers.onefs.shares._key"
+  def __init__(self):
+	REGPATH_SRV_SHARES = "registry.Services.lwio.Parameters.Drivers.srv.shares._multi_sz"
+	REGPATH_SRV_SHARE_ACLS = "registry.Services.lwio.Parameters.Drivers.srv.shares.security._binary"
+	REGPATH_ONEFS_SHARES = "registry.Services.lwio.Parameters.Drivers.onefs.shares._key"
 
   nameKey   = '_name'
 
