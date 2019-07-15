@@ -1,11 +1,6 @@
 #!/usr/bin/env python
-from __future__ import print_function
-from future import standard_library
-standard_library.install_aliases()
-from builtins import input
-from builtins import range
 import random
-from urllib.request import urlopen
+from urllib import urlopen
 import sys
 
 WORD_URL = "http://learncodethehardway.org/words.txt"
@@ -60,7 +55,7 @@ def convert(snippet, phrase):
 #keep going until they hit CTRL-D
 try:
   while True:
-    snippets = list(PHRASES.keys())
+    snippets = PHRASES.keys()
     random.shuffle(snippets)
 
     for snippet in snippets:
@@ -69,9 +64,9 @@ try:
       if PHRASE_FIRST:
         question, answer = answer, question
 
-      print(question)
+      print question
 
-      input("> ")
-      print("Answer: %s\n\n" % answer)
+      raw_input("> ")
+      print "Answer: %s\n\n" % answer
 except EOFError:
-  print("\nBye")
+  print "\nBye"

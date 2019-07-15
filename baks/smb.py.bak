@@ -14,8 +14,6 @@
 #Corrections are made to /ifs/.ifsvar/main_config.gc
 #Changes are logged in /ifs/.ifsvar/main_config_changes.log
 
-from __future__ import print_function
-from builtins import object
 import optparse
 import isi.gconfig as gcfg
 
@@ -28,7 +26,7 @@ def processArgs():
   return (options, args)
 
 
-class GlobalStrings(object):
+class GlobalStrings:
   # global strings to key from having stupid typos
   def __init__(self):
 	self.REGPATH_SRV_SHARES = "registry.Services.lwio.Parameters.Drivers.srv.shares._multi_sz"
@@ -55,7 +53,7 @@ def run():
 
   for share in allShares:
     if options.verbrose==True:
-      print("found share ", share[g.nameKey])
+      print "found share ", share[g.nameKey]
   ShareDict[share[g.nameKey]] = "SRV"
 
   # Now look at the onefs share parts and we must
@@ -65,7 +63,7 @@ def run():
   for share in allShares:
     if share[g.nameKey] not in ShareDict:
       if options.verbrose==True:
-        print("deleting ophaned share",expandString(share[g.nameKey]))
+        print "deleting ophaned share",expandString(share[g.nameKey])
       ctx.delete(g.REGPATH_ONEFS_SHARES+"."+expandString(share[g.nameKey]))
     else:
       del ShareDict[share[g.nameKey]]
@@ -73,7 +71,7 @@ def run():
         # Now we have to remove the leftover shares
     for shareName in ShareDict:
       if options.verbrose==True:
-        print("removing removing",expandString(shareName))
+        print "removing removing",expandString(shareName)
       ctx.delete(g.REGPATH_SRV_SHARES+"."+expandString(shareName))
 
     # For next pass a valid share list is needed
@@ -82,7 +80,7 @@ def run():
 
     for share in allShares:
       if options.verbrose==True:
-        print("Found complete share ", share[g.nameKey]) 
+        print "Found complete share ", share[g.nameKey] 
       ShareDict[share[g.nameKey]] = "SRV"
 
     # check for any abandoned ACLs
@@ -91,7 +89,7 @@ def run():
     for share in allShares:
       if share[g.nameKey] not in ShareDict:
         if options.verbrose==True: 
-          print("Removing abandoned ACLs for share", share[g.nameKey])
+          print "Removing abandoned ACLs for share", share[g.nameKey]
         ctx.delete(g.REGPATH_SRV_SHARE_ACLS+"."+expandString(share[g.nameKey]))
 
     ctx.commit()  # needed to actually updated the file. 
@@ -102,8 +100,8 @@ def run():
 #print "opts: ", options
 #print "args: ", args
 if options.verbrose==True:
-        print("making noise")
+        print "making noise"
 
 run()
-print("Done! Now 'isi smb shares list' should work")
+print "Done! Now 'isi smb shares list' should work"
 #Finish 

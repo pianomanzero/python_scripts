@@ -1,79 +1,81 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
+from builtins import input
 import time
 
 
-print "Welcome to the door game"
+print("Welcome to the door game")
 time.sleep(2)
-print "You find yourself in a dark, creepy looking room."
+print("You find yourself in a dark, creepy looking room.")
 time.sleep(2)
-print "You see two doors before you, and no way back"
+print("You see two doors before you, and no way back")
 time.sleep(2)
-print "Choose a door, door #1 or door #2:"
-door = raw_input("> ")
+print("Choose a door, door #1 or door #2:")
+door = input("> ")
 
 if door == "1":
-  print "You see a giant grizzly bear eating a birthday cake. What do you do?"
+  print("You see a giant grizzly bear eating a birthday cake. What do you do?")
   time.sleep(2)
-  print "1- Take the cake"
-  print "2- Scream at the bear"
+  print("1- Take the cake")
+  print("2- Scream at the bear")
   
-  bear = raw_input("> ")
+  bear = input("> ")
 
   if bear == "1":
-    print "The bear eats your face off."
+    print("The bear eats your face off.")
     time.sleep(2)
-    print "Too bad.."
+    print("Too bad..")
     time.sleep(2)
-    print "You showed promise."
+    print("You showed promise.")
     time.sleep(2)
-    print "That'll teach you to take a birthday cake from a grizzly bear."
+    print("That'll teach you to take a birthday cake from a grizzly bear.")
   elif bear == "2":
-    print "The bear eats your legs off"
+    print("The bear eats your legs off")
     time.sleep(2)
-    print "Too bad.."
+    print("Too bad..")
     time.sleep(2)
-    print "Most people need those"
+    print("Most people need those")
     time.sleep(2)
-    print "I suppose that'll teach you to raise your voice to a grizzly bear"
+    print("I suppose that'll teach you to raise your voice to a grizzly bear")
   else:
-    print "Well, %s is probably a better idea anyways.  Bear runs away." % bear
+    print("Well, %s is probably a better idea anyways.  Bear runs away." % bear)
     time.sleep(2)
-    print "You enjoy your birthday cake with a sense of accomplishment."
+    print("You enjoy your birthday cake with a sense of accomplishment.")
 
 elif door == "2":
-  print "You stare into the endless abyss of Cthulhu's retina"
+  print("You stare into the endless abyss of Cthulhu's retina")
   time.sleep(2)
-  print "1- Blueberries"
+  print("1- Blueberries")
   time.sleep(2)
-  print "2- Yellow jacket clothespins"
+  print("2- Yellow jacket clothespins")
   time.sleep(2)
-  print "3- Understanding revolvers yelling melodies"
+  print("3- Understanding revolvers yelling melodies")
   time.sleep(2)
-  insanity = raw_input("> ")
+  insanity = input("> ")
 
   if insanity == "1" or insanity == "2":
-    print "Your body survives powered by a mind of jello."
+    print("Your body survives powered by a mind of jello.")
     time.sleep(2)
-    print "You continue on as a dribbling minion of Gozer."
+    print("You continue on as a dribbling minion of Gozer.")
   elif insanity == "3":
-    print "The untold, eldritch hoards of Cthulhu consume you slowly,"
+    print("The untold, eldritch hoards of Cthulhu consume you slowly,")
     time.sleep(2)
-    print "...with relish"
+    print("...with relish")
     time.sleep(2)
-    print "...mint chutney"
+    print("...mint chutney")
     time.sleep(2)
-    print "...fava beans"
+    print("...fava beans")
     time.sleep(2)
-    print "...and a nice chianti."
+    print("...and a nice chianti.")
     time.sleep(2)
-    print "THUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHU"
+    print("THUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHUTHU")
   else:
-    print "Cthulhu grants you eternal as his unspeakable, deformed minion, granting unto you the unknown terrible knowledge of the universe."
+    print("Cthulhu grants you eternal as his unspeakable, deformed minion, granting unto you the unknown terrible knowledge of the universe.")
     time.sleep(2)
-    print "Your mother and I are not amused"
+    print("Your mother and I are not amused")
 else:
-  print "You stumble on a knife and die. Good job."
+  print("You stumble on a knife and die. Good job.")
   time.sleep(2)
-  print "Idiot."
+  print("Idiot.")
 

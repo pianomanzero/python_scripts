@@ -9,9 +9,6 @@
 # Mon Jul  2 15:45:03 GMT 2012
 # Version: $Id$
 
-from __future__ import print_function
-from future import standard_library
-standard_library.install_aliases()
 import errno
 import getopt
 import os
@@ -57,11 +54,11 @@ def isys(cmd):
 	try:
 		(error, output) = procs.get_cmd_output(cmd)
 		if not error:
-			return [x.rstrip() for x in output]
+			return map(lambda x: x.rstrip(), output)
 #       else:
 #           print error, output
-	except Exception as e:
-		print("ERROR: ", e)
+	except Exception, e:
+		print "ERROR: ", e
 
 def pidof(cmd):
 	pidstr = isys("pgrep %s" % cmd)
@@ -89,19 +86,19 @@ def check_netlogond_mem(pid):
 		if tpid == 'PID':
 			continue	# ignore header line
 		if Debug:
-			print("check_netlogond %s size is %s" % (Netlogond_name, vsz))
+			print "check_netlogond %s size is %s" % (Netlogond_name, vsz)
 		return int(vsz)
 
 def gcore_netlogond(pid):
 	global Netlogond_name
-	print("Collecting core for %s" % Netlogond_name)
+	print "Collecting core for %s" % Netlogond_name
 	t=datetime.datetime.today()
 	isys("gcore -s -c %s/core.%s.%s.%s %s" %
 		(CORE_DIR, Netlogond_name, platform.node(), t.strftime("%m%d-%H%M%S"), pid))
 
 def restart_netlogond():
 	global Netlogond_name
-	print("Restarting %s" % Netlogond_name)
+	print "Restarting %s" % Netlogond_name
 	isys("killall -9 %s" % Netlogond_name)
 	time.sleep(60);
 	return
@@ -115,18 +112,18 @@ def main(argv):
 	major_version = version[1]
 	if major_version == '6':
 		if Debug:
-			print("Running on OneFS 6.x")
+			print "Running on OneFS 6.x"
 		VM_WARN_THRESH = VM_WARN_THRESH_PRE7
 		VM_RESTART_THRESH = VM_RESTART_THRESH_PRE7
 		Netlogond_name = 'netlogond'
 	elif major_version == '7':
 		if Debug:
-			print("Running on OneFS 7.x")
+			print "Running on OneFS 7.x"
 		VM_WARN_THRESH = VM_WARN_THRESH_POST7
 		VM_RESTART_THRESH = VM_RESTART_THRESH_POST7
 		Netlogond_name = 'netlogon'
 	else:
-		print("unsupported os version %s" % version)
+		print "unsupported os version %s" % version
 		sys.exit(1)
 	if Gcore_enabled:
 		isys("mkdir -p %s" % CORE_DIR)
@@ -134,21 +131,21 @@ def main(argv):
 		netlogond_pid = pidof(Netlogond_name)
 		if not netlogond_pid:
 			if Debug:
-				print("Unable to find %s process!" % Netlogond_name)
+				print "Unable to find %s process!" % Netlogond_name
 			send_alert("%s is apparently not running on node %s, retrying in 30 seconds" % (Netlogond_name, node))
 			time.sleep(30);
 			continue
 		if (Debug):
-			print("%s pid = %s" % (Netlogond_name, netlogond_pid))
+			print "%s pid = %s" % (Netlogond_name, netlogond_pid)
 		cur_vsz = check_netlogond_mem(netlogond_pid)
 		if (cur_vsz > VM_WARN_THRESH):
 			if alert_counter > 0:
 				alert_counter = alert_counter - 1
 				if Debug:
-					print("over size alert squelched")
+					print "over size alert squelched"
 			else:
 				if Debug:
-					print("WARNING: %s process size %d KB > %d KB warning threshold" % (Netlogond_name, cur_vsz, VM_WARN_THRESH))
+					print "WARNING: %s process size %d KB > %d KB warning threshold" % (Netlogond_name, cur_vsz, VM_WARN_THRESH)
 				send_alert("WARNING: %s vsz %d KB exceeded threshold %d KB on node %s" % (Netlogond_name, cur_vsz, VM_WARN_THRESH, node))
 				if Gcore_enabled:
 					gcore_netlogond(netlogond_pid)
@@ -159,7 +156,7 @@ def main(argv):
 				restart_netlogond()
 			else:
 				if Debug:
-					print("Would have restarted %s here" % Netlogond_name)
+					print "Would have restarted %s here" % Netlogond_name
 		time.sleep(30);
 
 if __name__ == "__main__":
