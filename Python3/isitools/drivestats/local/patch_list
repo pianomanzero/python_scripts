@@ -1,0 +1,107 @@
+  Patch Name: 8.1.2.0_KGA-RUP_2019-05_249622
+ Description: Multiple Kernel Fixes
+      Status: Installed
+       Nodes: 1, 2, 3, 4, 5, 6, 7, 8
+     Comment: Multiple Kernel Fixes.
+              This patch applies to OneFS version(s): 8.1.2.0.
+              
+              # SPECIAL FILES BEGIN
+              /lib/libbsdxml.so.4
+              /lib/libcrypto.so.8
+              # SPECIAL FILES END
+   Conflicts: -
+Dependencies: -
+      Reboot: Required
+       Files
+            Path: /boot/kernel.amd64/cpuctl.ko
+             Md5: MD5:9bafd4980e73697a4d3f8f2914e536f6
+
+            Path: /boot/kernel.amd64/isi_lwext.ko.gz
+             Md5: MD5:12816ec55af1038a4f03e60b28f7ff25
+  Patch Name: 8.1.2.0_UGA-RUP_2019-05_249620
+ Description: Multiple Userspace Fixes
+      Status: Installed
+       Nodes: 1, 2, 3, 4, 5, 6, 7, 8
+     Comment: Multiple Userspace Fixes.
+              This patch applies to OneFS version(s): 8.1.2.0.
+              
+              # IMPACTED SERVICES BEGIN
+              apache2
+              auth
+              celog
+              hdfs
+              isi_audit_cee
+              isi_audit_d
+              isi_audit_syslog
+              isi_cpool_d
+              isi_cpool_io_d
+              isi_drive_d
+              isi_drive_repurpose_d
+              isi_drivemon
+              isi_esrs_d
+              isi_group_change_d
+              isi_hangdump
+              isi_hwmon
+              isi_job_d
+              isi_km_d
+              isi_mcp
+              isi_migrate
+              isi_object_d
+              isi_papi_d
+              isi_ph_rpcd
+              isi_rsapi_d
+              isi_smartpools_d
+              isi_tardis_d
+              isi_tardis_gcfg_d
+              isi_upgrade_d
+              isi_webui
+              lwsm
+              lwswift
+              ndmpd
+              nfs
+              rpcbind
+              scheduler
+              smb
+              # IMPACTED SERVICES END
+   Conflicts: -
+Dependencies: -
+      Reboot: Not required
+       Files
+            Path: /etc/mcp/templates/apache24.conf
+             Md5: MD5:5e9b06f90ad44b5ef4a6db716f658e24
+
+            Path: /etc/mcp/templates/sudoers
+             Md5: MD5:22f2c86706bef012dca1103099458f0e
+
+            Path: /etc/mcp/templates/webui_httpd.conf
+             Md5: MD5:e8e1952a1a800cdf2b8d5f2b18a90ebd
+
+            Path: /usr/bin/isi_migr_pworker
+  Patch Name: HealthCheck_8.1.2_2019-05
+ Description: [8.1.2 UHC 2019-05] HealthCheck RUP
+      Status: Installed
+       Nodes: 1, 2, 3, 4, 5, 6, 7, 8
+     Comment: This patch installs HealthCheck RUP 2019-05
+              
+                      Applies to OneFS versions: 8.1.2.0
+   Conflicts: -
+Dependencies: -
+      Reboot: Not required
+       Files
+            Path: /usr/libexec/isilon/ioca/IOCA
+             Md5: MD5:ae9c10e41db2d5e9ac8c898aa3ed15a6
+
+            Path: /usr/libexec/isilon/isi_healthcheck
+             Md5: MD5:571796533a986ff35294bc259f538314
+
+            Path: /usr/libexec/isilon/checks/auth_providers.pyc
+             Md5: MD5:6ee621991b0a934d95d20f9c7f13b0eb
+
+            Path: /usr/libexec/isilon/checks/nfs_daemon.pyc
+             Md5: MD5:38e9b37db3b5351e8652a1a09cb8b317
+
+            Path: /usr/libexec/isilon/checks/dimm_health_status.pyc
+             Md5: MD5:0c90408a2ff2d4873fee312d8fd4bbe1
+
+            Path: /usr/libexec/isilon/checks/smartconnect_enabled.pyc
+             Md5: MD5:7e707b069b7903e68c584d55619e0e73

@@ -1,0 +1,5 @@
+%{id} %{internal} %{node} %{lnn}
+1 128.221.254.1 fs-chmmisip01-1 1
+2 128.221.254.2 fs-chmmisip01-2 2
+3 128.221.254.3 fs-chmmisip01-3 3
+4 128.221.254.4 fs-chmmisip01-4 4 

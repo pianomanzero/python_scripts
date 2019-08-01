@@ -1,0 +1,5 @@
+tcpdump -i ens192
+tcpdump -i ens192 -w ./mypcap.pcap
+tcpdump -i ens192 port 2049 -w ./mypcap_2049.pcap
+mkdir -p $(date +%m%d%Y)/pcaps/ && for int in $(ls /sys/class/net | grep -v "lo"); do tcpdump -W 3 -C 200 -w $(date +%m%d%Y)/pcaps/$(uname -n).${int}.pcap -s0 -ni $int not port 22; done
+isi_for_array 'for i in $(ifconfig | grep flags= | cut -f1 -d':'|egrep -v "ib0|ib1|lo0"); do tcpdump -i ${i} -s 0 -w /ifs/data/Isilon_Support/PCAP/${HOST}_${i}.pcap &; done'
